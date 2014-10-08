@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Common.Logging;
 using Newtonsoft.Json;
 using System.Collections.Specialized;
-using Aqueduct.Diagnostics;
 
 namespace Aqueduct.ServerDensity
 {
     public sealed class MetricsApi : IMetricsApi
     {
-        readonly static ILogger Logger = AppLogger.GetNamedLogger(typeof(ServerDensityApi));
+        readonly static ILog Logger = LogManager.GetLogger<ServerDensityApi>();
 
         private const string ModuleName = "metrics";
         private readonly ServerDensityApi _ApiBase;
@@ -22,9 +18,9 @@ namespace Aqueduct.ServerDensity
 
         public string UploadPluginData(string deviceId, MetricsPayload payload)
         {
-            Logger.LogDebugMessage("Uploading plugin data for device " + deviceId);
+            Logger.Debug("Uploading plugin data for device " + deviceId);
 
-            NameValueCollection postData = new NameValueCollection();
+            var postData = new NameValueCollection();
             postData["payload"] = JsonConvert.SerializeObject(payload);
 
             var extraParams = new NameValueCollection();

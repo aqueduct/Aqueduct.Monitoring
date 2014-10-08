@@ -12,9 +12,7 @@ App_Data/*
 *.orig
 
 # Raven DB
-/Src/packages/RavenDB*/server/Logs/
-/Src/packages/RavenDB*/server/Data/
-/Src/packages/RavenDB*/server/Tenants/
+/packages
 
 # front-end linked directories
 /src/DataCity.FrontEnd/run-in/css/

@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Aqueduct.Monitoring.MVC;
-using Aqueduct.Monitoring;
-using Aqueduct.Web;
-using Aqueduct.Web.Configuration;
-using Aqueduct.Diagnostics;
 using Aqueduct.Monitoring.Subscribers;
 
 namespace Aqueduct.Monitoring.SampleMVCSite
@@ -43,29 +36,14 @@ namespace Aqueduct.Monitoring.SampleMVCSite
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            WebApplicationInitialiser.Setup(this, initActionList =>
-            {
-                initActionList.Add(new DefaultConfigInitialiser());
-                initActionList.AddOnFirstRequestAction(InitialiseLog4Net);
-                initActionList.AddOnFirstRequestAction(InitialiseSubscribers);
-            });
+            InitialiseSubscribers();
+
         }
 
-        private static void InitialiseSubscribers(HttpApplication application)
+        private static void InitialiseSubscribers()
         {
             var subscriber = new ServerDensity.ServerDensitySubscriber("", "");
             subscriber.Subscribe();
-        }
-
-        private static void InitialiseLog4Net(HttpApplication application)
-        {
-            string machineName = application.Server.MachineName;
-            if (!string.IsNullOrEmpty(machineName))
-            {
-                AppLogger.AddGlobalCustomParameter("server", machineName);
-            }
-            AppLogger.InitialiseFromConfig("DEFAULT");
-            AppLogger.LogDebugMessage("log4Net has been initialised.");
         }
 
         protected void Application_End()

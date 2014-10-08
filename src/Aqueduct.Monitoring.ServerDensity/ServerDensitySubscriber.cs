@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Aqueduct.ServerDensity;
-using Aqueduct.Diagnostics;
+using Common.Logging;
 
 namespace Aqueduct.Monitoring.ServerDensity
 {
     public class ServerDensitySubscriber
     {
-        readonly static ILogger Logger = AppLogger.GetNamedLogger(typeof(ServerDensitySubscriber));
+        readonly static ILog Logger = LogManager.GetLogger<ServerDensitySubscriber>();
         private readonly string _AgentKey;
         public const string ServerDensityFeatureGroup = "serverdensity";
         private IServerDensityApi _api;
@@ -28,7 +28,7 @@ namespace Aqueduct.Monitoring.ServerDensity
 
         private void ProcessStats(IList<FeatureStatistics> stats)
         {
-            Logger.LogDebugMessage("Creating ServerDensity payload");
+            Logger.Debug("Creating ServerDensity payload");
             var payload = new MetricsPayload() { AgentKey = _AgentKey };
             bool hasData = false;
             foreach (var featureStat in stats.Where(x => x.Group == ServerDensityFeatureGroup))
@@ -45,11 +45,11 @@ namespace Aqueduct.Monitoring.ServerDensity
 
             if (hasData)
             {
-                Logger.LogDebugMessage(String.Format("Uploading {0} stats to ServerDensity", stats.Count));
+                Logger.Debug(String.Format("Uploading {0} stats to ServerDensity", stats.Count));
                 _api.Metrics.UploadPluginData(_deviceId, payload);
             }
             else
-                Logger.LogDebugMessage("No need to call server density");
+                Logger.Debug("No need to call server density");
         }
     }
 }
