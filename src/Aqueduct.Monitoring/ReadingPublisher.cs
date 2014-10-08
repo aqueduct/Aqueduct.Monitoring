@@ -140,7 +140,7 @@ namespace Aqueduct.Monitoring
 			else
 			{
 				var readingData = dataPoint.Readings.FirstOrDefault(rd => rd.Name == reading.Data.Name);
-				if (readingData == null)
+				if (readingData == null || readingData.CanAggregate == false)
 					dataPoint.Readings.Add(reading.Data);
 				else
 					readingData.Aggregate(reading.Data);

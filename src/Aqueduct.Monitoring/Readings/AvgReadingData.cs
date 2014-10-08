@@ -18,9 +18,14 @@ namespace Aqueduct.Monitoring.Readings
 			return Values.Average();
 		}
 
-		internal override void Aggregate(ReadingData other)
+		public override void Aggregate(ReadingData other)
 		{
 			Values.Add((double)other.GetValue());
 		}
+
+	    public override bool CanAggregate
+	    {
+	        get { return true; }
+	    }
 	}
 }

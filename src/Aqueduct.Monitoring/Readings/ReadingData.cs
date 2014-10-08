@@ -4,6 +4,12 @@ namespace Aqueduct.Monitoring.Readings
 	{
 		public string Name { get; set; }
 		public abstract dynamic GetValue();
-		internal abstract void Aggregate(ReadingData other);
+
+	    public virtual void Aggregate(ReadingData other)
+	    {
+	    }
+
+        public abstract bool CanAggregate { get; }
+
 	}
 }

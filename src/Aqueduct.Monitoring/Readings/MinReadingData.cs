@@ -16,9 +16,14 @@ namespace Aqueduct.Monitoring.Readings
 			return Value;
 		}
 
-		internal override void Aggregate(ReadingData other)
+		public override void Aggregate(ReadingData other)
 		{
 			Value = Math.Min(Value, (double)other.GetValue());
 		}
+
+	    public override bool CanAggregate
+	    {
+	        get { throw new NotImplementedException(); }
+	    }
 	}
 }
