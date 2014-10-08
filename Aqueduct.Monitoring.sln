@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{1B4A32E1-7357-4831-BE9E-A0217D6537F0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Stuff", "Build Stuff", "{1B4A32E1-7357-4831-BE9E-A0217D6537F0}"
 	ProjectSection(SolutionItems) = preProject
 		Aqueduct.Monitoring.build = Aqueduct.Monitoring.build
 		build.bat = build.bat
@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqueduct.ServerDensity.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqueduct.ServerDensity.IntegrationTests", "src\Aqueduct.ServerDensity.IntegrationTests\Aqueduct.ServerDensity.IntegrationTests.csproj", "{4108D050-260B-43BD-853F-E3CFA123F896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqueduct.Monitoring.Database", "Aqueduct.Monitoring.Database\Aqueduct.Monitoring.Database.csproj", "{3B621195-F400-4E0A-9F32-AE3E657C2779}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqueduct.Monitoring.Database", "src\Aqueduct.Monitoring.Database\Aqueduct.Monitoring.Database.csproj", "{3B621195-F400-4E0A-9F32-AE3E657C2779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
