@@ -52,7 +52,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="FeatureDescriptor.cs" />
-    <Compile Include="Readings\DateTimeReading.cs" />
+    <Compile Include="Readings\StringReading.cs" />
     <Compile Include="Readings\DoubleReadingData.cs" />
     <Compile Include="Readings\ReadingData.cs" />
     <Compile Include="Sensors\AmountSensor.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readings\Reading.cs" />
     <Compile Include="Sensors\SensorBase.cs" />
-    <Compile Include="Sensors\TimeStampSensor.cs" />
+    <Compile Include="Sensors\TextSensor.cs" />
     <Compile Include="Sensors\TimingSensor.cs" />
     <Compile Include="Subscribers\LoggingSubscriber.cs" />
   </ItemGroup>

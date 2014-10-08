@@ -2,14 +2,14 @@ using System;
 
 namespace Aqueduct.Monitoring.Readings
 {
-    public class DateTimeReading : ReadingData
+    public class StringReading : ReadingData
     {
-        public DateTimeReading(DateTime value)
+        public StringReading(string value)
         {
             Value = value;
         }
 
-        public DateTime Value { get; set; }
+        public string Value { get; set; }
 
         public override dynamic GetValue()
         {
